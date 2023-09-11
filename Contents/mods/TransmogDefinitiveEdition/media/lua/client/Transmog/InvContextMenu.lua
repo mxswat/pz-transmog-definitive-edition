@@ -4,6 +4,11 @@ local addEditTransmogItemOption = function(player, context, items)
   local playerObj = getSpecificPlayer(player)
   local testItem = nil
   local clothing = nil
+  
+  if playerObj:getPerkLevel(Perks.Tailoring) < SandboxVars.TransmogDE.TailoringLevelRequirement then
+	return
+  end
+  
   for _, v in ipairs(items) do
     testItem = v;
     if not instanceof(v, "InventoryItem") then
